@@ -256,7 +256,11 @@ public class EntityPOJOClass extends BasicPOJOClass {
                         // TODO: manage attributes schema + catalog added to @SequenceGenerator since JPA 2.0
 						builder.resetAnnotation( importType("javax.persistence.SequenceGenerator") )
 							.addQuotedAttribute( "name", clazz.getClassName()+"IdGenerator" ) 
-							.addQuotedAttribute( "sequenceName", properties.getProperty(  org.hibernate.id.enhanced.SequenceStyleGenerator.SEQUENCE_PARAM, null ) );
+							.addQuotedAttribute( "sequenceName", properties.getProperty(  org.hibernate.id.enhanced.SequenceStyleGenerator.SEQUENCE_PARAM, null ) )
+							// add optional attribute 'schema'
+							.addQuotedAttribute( "schema", properties.getProperty( org.hibernate.id.PersistentIdentifierGenerator.SCHEMA, null ))
+							// add optional attribute 'catalog'
+							.addQuotedAttribute( "catalog", properties.getProperty( org.hibernate.id.PersistentIdentifierGenerator.CATALOG, null ));
 							//	TODO HA does not support initialValue and allocationSize
 						idResult.append(builder.getResult());
 					}
