@@ -431,7 +431,7 @@ public class EntityPOJOClass extends BasicPOJOClass {
 
 	public String[] getCascadeTypes(Property property) {
 		StringTokenizer st =  new StringTokenizer( property.getCascade(), ", ", false );
-		List<String> types = new ArrayList<String>();
+		List<String> types = new ArrayList<>();
 		while ( st.hasMoreElements() ) {
 			String element = ( (String) st.nextElement() ).toLowerCase();
 			if ( "persist".equals( element ) ) {
@@ -440,13 +440,17 @@ public class EntityPOJOClass extends BasicPOJOClass {
 			else if ( "merge".equals( element ) ) {
 				types.add(importType( "javax.persistence.CascadeType") + ".MERGE");
 			}
-			else if ( "delete".equals( element ) ) {
+			// TODO: Consistence : delete not remove ?
+			else if ( "delete".equals( element ) || "remove".equals( element ) ) {
 				types.add(importType( "javax.persistence.CascadeType") + ".REMOVE");
 			}
 			else if ( "refresh".equals( element ) ) {
 				types.add(importType( "javax.persistence.CascadeType") + ".REFRESH");
 			}
 			// TODO: add CascadeType.DETACH since JPA 2.0
+			else if ( "detach".equals( element ) ) {
+				types.add(importType( "javax.persistence.CascadeType") + ".DETACH");
+			}
 			else if ( "all".equals( element ) ) {
 				types.add(importType( "javax.persistence.CascadeType") + ".ALL");
 			}
