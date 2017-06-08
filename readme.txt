@@ -32,4 +32,4 @@ Home Page:        http://tools.hibernate.org | http://jboss.org/tools
 Downloads:        http://jboss.org/tools/download
 Mailing lists:    http://www.hibernate.org/community/mailinglists.html
 Source Code:      https://github.com/hibernate/hibernate-tools/
-Issue Tracking:   http://opensource.atlassian.com/projects/hibernate/browse/HBX
+Issue Tracking:   https://hibernate.atlassian.net/projects/HBX/issues
