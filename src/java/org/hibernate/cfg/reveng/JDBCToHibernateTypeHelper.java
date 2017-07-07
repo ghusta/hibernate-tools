@@ -79,7 +79,7 @@ public final class JDBCToHibernateTypeHelper {
 			   return returnNullable?Long.class.getName():"long";
 		   }
 		   else {
-			   return "big_decimal";
+			   return "big_decimal";  // why not "big_integer" if scale <= 0 ?
 		   }
 	   }
 	   
